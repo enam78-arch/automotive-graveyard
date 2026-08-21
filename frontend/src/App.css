@@ -821,4 +821,75 @@
 
     padding: 25px;
   }
+}/* Technology Detail Panel */
+
+.technology-detail {
+  position: relative;
+  margin-top: 32px;
+  padding: 40px;
+  border: 1px solid rgba(0, 255, 255, 0.35);
+  background: rgba(5, 10, 18, 0.95);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.08);
+}
+
+.technology-detail .detail-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(0, 255, 255, 0.4);
+  background: transparent;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.technology-detail .detail-close:hover {
+  background: rgba(0, 255, 255, 0.12);
+}
+
+.technology-detail .eyebrow {
+  margin-bottom: 12px;
+  color: #00ffff;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.technology-detail h2 {
+  margin: 0 0 18px;
+  font-size: 36px;
+  line-height: 1.1;
+}
+
+.detail-description {
+  max-width: 700px;
+  margin-bottom: 32px;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.7;
+}
+
+.detail-info {
+  display: flex;
+  gap: 50px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 24px;
+}
+
+.detail-info div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detail-info span {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.detail-info strong {
+  color: #ffffff;
+  font-size: 16px;
 }

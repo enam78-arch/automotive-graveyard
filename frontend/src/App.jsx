@@ -1,6 +1,9 @@
+import { useState } from "react";
 import "./App.css";
 import technologies from "./data/technologies";
 function App() {
+  const [selectedTechnology, setSelectedTechnology] = useState(null);
+
   return (
     <div className="app">
       <nav className="navbar">
@@ -58,7 +61,11 @@ function App() {
 
           <div className="technology-grid">
             {technologies.map((technology) => (
-  <article className="technology-card" key={technology.id}>
+  <article
+  className="technology-card"
+  key={technology.id}
+  onClick={() => setSelectedTechnology(technology)}
+>
     <span className="card-number">
       {String(technology.id).padStart(2, "0")}
     </span>
@@ -71,7 +78,40 @@ function App() {
 
     <span className="card-arrow">→</span>
   </article>
-))}
+))}    {selectedTechnology && (
+      <div className="technology-detail">
+        <button
+          className="detail-close"
+          onClick={() => setSelectedTechnology(null)}
+        >
+          ×
+        </button>
+
+        <p className="eyebrow">
+          {selectedTechnology.status}
+        </p>
+
+        <h2>{selectedTechnology.name}</h2>
+
+        <p className="detail-description">
+          {selectedTechnology.description}
+        </p>
+
+        <div className="detail-info">
+          <div>
+            <span>ID</span>
+            <strong>
+              {String(selectedTechnology.id).padStart(2, "0")}
+            </strong>
+          </div>
+
+          <div>
+            <span>STATUS</span>
+            <strong>{selectedTechnology.status}</strong>
+          </div>
+        </div>
+      </div>
+    )}
           </div>
         </section>
       </main>
