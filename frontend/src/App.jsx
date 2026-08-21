@@ -1,5 +1,5 @@
 import "./App.css";
-
+import technologies from "./data/technologies";
 function App() {
   return (
     <div className="app">
@@ -57,54 +57,21 @@ function App() {
           </div>
 
           <div className="technology-grid">
-            <article className="technology-card">
-              <span className="card-number">01</span>
-              <div>
-                <p className="card-status">EXTINCT</p>
-                <h3>Pop-Up Headlights</h3>
-                <p>
-                  Retractable headlights that became an icon of automotive
-                  design.
-                </p>
-              </div>
-              <span className="card-arrow">↗</span>
-            </article>
+            {technologies.map((technology) => (
+  <article className="technology-card" key={technology.id}>
+    <span className="card-number">
+      {String(technology.id).padStart(2, "0")}
+    </span>
 
-            <article className="technology-card">
-              <span className="card-number">02</span>
-              <div>
-                <p className="card-status">ENDANGERED</p>
-                <h3>Rotary Engines</h3>
-                <p>
-                  A radically different approach to creating combustion power.
-                </p>
-              </div>
-              <span className="card-arrow">↗</span>
-            </article>
+    <div>
+      <p className="card-status">{technology.status}</p>
+      <h3>{technology.name}</h3>
+      <p>{technology.description}</p>
+    </div>
 
-            <article className="technology-card">
-              <span className="card-number">03</span>
-              <div>
-                <p className="card-status">RARE</p>
-                <h3>Hydraulic Steering</h3>
-                <p>
-                  Mechanical assistance that once defined the feel of the road.
-                </p>
-              </div>
-              <span className="card-arrow">↗</span>
-            </article>
-
-            <article className="technology-card">
-              <span className="card-number">04</span>
-              <div>
-                <p className="card-status">DISAPPEARING</p>
-                <h3>Manual Gearboxes</h3>
-                <p>
-                  The driver's direct connection to the machinery beneath.
-                </p>
-              </div>
-              <span className="card-arrow">↗</span>
-            </article>
+    <span className="card-arrow">→</span>
+  </article>
+))}
           </div>
         </section>
       </main>
