@@ -115,6 +115,11 @@ function App() {
           </div>
         </section>
       </main>
+      <footer className="creator-footer">
+        <span>RESEARCHED • DESIGNED • ENGINEERED BY</span>
+        <strong>enam78-arch</strong>
+        <span>EST. 2026</span>
+      </footer>
     </div>
   );
 }
