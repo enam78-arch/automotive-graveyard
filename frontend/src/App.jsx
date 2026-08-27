@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import technologies from "./data/technologies";
+
 function App() {
   const [selectedTechnology, setSelectedTechnology] = useState(null);
-useEffect(() => {
-  if (selectedTechnology) {
-    document.body.style.overflow = "hidden";
-  } else {
-    document.body.style.overflow = "";
-  }
 
-  return () => {
-    document.body.style.overflow = "";
-  };
-}, [selectedTechnology]);
+  useEffect(() => {
+    if (selectedTechnology) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedTechnology]);
+
   return (
     <div className="app">
       <nav className="navbar">
@@ -66,67 +69,139 @@ useEffect(() => {
               <h2>Featured Technologies</h2>
             </div>
 
-            <span className="archive-count">04 / 100+</span>
+            <span className="archive-count">
+              {String(technologies.length).padStart(2, "0")} / 100+
+            </span>
           </div>
 
           <div className="technology-grid">
             {technologies.map((technology) => (
-  <article
-    className="technology-card"
-    key={technology.id}
-    onClick={() => setSelectedTechnology(technology)}
-  >
-    <span className="card-number">
-      {String(technology.id).padStart(2, "0")}
-    </span>
+              <article
+                className="technology-card"
+                key={technology.id}
+                onClick={() => setSelectedTechnology(technology)}
+              >
+                <span className="card-number">
+                  {String(technology.id).padStart(2, "0")}
+                </span>
 
-    <div>
-      <p className="card-status">{technology.status}</p>
-      <h3>{technology.name}</h3>
-      <p>{technology.description}</p>
-    </div>
+                <div>
+                  <p className="card-status">{technology.status}</p>
 
-    <span className="card-arrow">→</span>
-  </article>
-))}
-</div>
+                  <h3>{technology.name}</h3>
 
-{selectedTechnology && (
-  <div className="technology-detail">
-    <button
-      className="detail-close"
-      onClick={() => setSelectedTechnology(null)}
-    >
-      ×
-    </button>
+                  <p>{technology.description}</p>
+                </div>
 
-    <p className="eyebrow">
-      {selectedTechnology.status}
-    </p>
+                <span className="card-arrow">→</span>
+              </article>
+            ))}
+          </div>
 
-    <h2>{selectedTechnology.name}</h2>
+          {selectedTechnology && (
+            <div className="technology-detail">
+              <button
+                className="detail-close"
+                onClick={() => setSelectedTechnology(null)}
+              >
+                ×
+              </button>
 
-    <p className="detail-description">
-      {selectedTechnology.description}
-    </p>
+              <p className="eyebrow">
+                {selectedTechnology.status}
+              </p>
 
-    <div className="detail-info">
-      <div>
-        <span>ID</span>
-        <strong>
-          {String(selectedTechnology.id).padStart(2, "0")}
-        </strong>
-      </div>
+              <h2>{selectedTechnology.name}</h2>
 
-      <div>
-        <span>STATUS</span>
-        <strong>{selectedTechnology.status}</strong>
-      </div>
-    </div>
-  </div>
-)}
-</section>
+              <p className="detail-description">
+                {selectedTechnology.description}
+              </p>
+
+              <div className="detail-info">
+                <div>
+                  <span>ID</span>
+                  <strong>
+                    {String(selectedTechnology.id).padStart(2, "0")}
+                  </strong>
+                </div>
+
+                <div>
+                  <span>STATUS</span>
+                  <strong>{selectedTechnology.status}</strong>
+                </div>
+
+                <div>
+                  <span>CATEGORY</span>
+                  <strong>{selectedTechnology.category}</strong>
+                </div>
+
+                <div>
+                  <span>ERA</span>
+                  <strong>{selectedTechnology.era}</strong>
+                </div>
+              </div>
+
+              {selectedTechnology.howItWorked && (
+                <div className="detail-section">
+                  <h3>HOW IT WORKED</h3>
+                  <p>{selectedTechnology.howItWorked}</p>
+                </div>
+              )}
+
+              {selectedTechnology.whyItDisappeared && (
+                <div className="detail-section">
+                  <h3>WHY IT DISAPPEARED</h3>
+                  <p>{selectedTechnology.whyItDisappeared}</p>
+                </div>
+              )}
+
+              {selectedTechnology.advantages?.length > 0 && (
+                <div className="detail-section">
+                  <h3>ADVANTAGES</h3>
+
+                  <ul>
+                    {selectedTechnology.advantages.map((item, index) => (
+                      <li key={index}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {selectedTechnology.disadvantages?.length > 0 && (
+                <div className="detail-section">
+                  <h3>DISADVANTAGES</h3>
+
+                  <ul>
+                    {selectedTechnology.disadvantages.map((item, index) => (
+                      <li key={index}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {selectedTechnology.examples?.length > 0 && (
+                <div className="detail-section">
+                  <h3>EXAMPLES</h3>
+
+                  <ul>
+                    {selectedTechnology.examples.map((item, index) => (
+                      <li key={index}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {selectedTechnology.legacy && (
+                <div className="detail-section">
+                  <h3>LEGACY</h3>
+                  <p>{selectedTechnology.legacy}</p>
+                </div>
+              )}
+            </div>
+          )}
+        </section>
       </main>
+
       <footer className="creator-footer">
         <span>RESEARCHED • DESIGNED • ENGINEERED BY</span>
         <strong>enam78-arch</strong>
