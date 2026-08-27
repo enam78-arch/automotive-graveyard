@@ -822,14 +822,32 @@
     padding: 25px;
   }
 }/* Technology Detail Panel */
-
+.technology-detail::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(4px);
+}
 .technology-detail {
-  position: relative;
-  margin-top: 32px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+
+  width: min(720px, 90vw);
+  max-height: 80vh;
+  overflow-y: auto;
+
   padding: 40px;
+
   border: 1px solid rgba(0, 255, 255, 0.35);
-  background: rgba(5, 10, 18, 0.95);
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.08);
+  background: rgba(5, 10, 18, 0.98);
+  box-shadow:
+    0 0 60px rgba(0, 255, 255, 0.12),
+    0 20px 80px rgba(0, 0, 0, 0.6);
 }
 
 .technology-detail .detail-close {

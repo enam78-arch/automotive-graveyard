@@ -1,9 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import technologies from "./data/technologies";
 function App() {
   const [selectedTechnology, setSelectedTechnology] = useState(null);
+useEffect(() => {
+  if (selectedTechnology) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "";
+  }
 
+  return () => {
+    document.body.style.overflow = "";
+  };
+}, [selectedTechnology]);
   return (
     <div className="app">
       <nav className="navbar">
@@ -62,10 +72,10 @@ function App() {
           <div className="technology-grid">
             {technologies.map((technology) => (
   <article
-  className="technology-card"
-  key={technology.id}
-  onClick={() => setSelectedTechnology(technology)}
->
+    className="technology-card"
+    key={technology.id}
+    onClick={() => setSelectedTechnology(technology)}
+  >
     <span className="card-number">
       {String(technology.id).padStart(2, "0")}
     </span>
@@ -78,42 +88,44 @@ function App() {
 
     <span className="card-arrow">→</span>
   </article>
-))}    {selectedTechnology && (
-      <div className="technology-detail">
-        <button
-          className="detail-close"
-          onClick={() => setSelectedTechnology(null)}
-        >
-          ×
-        </button>
+))}
+</div>
 
-        <p className="eyebrow">
-          {selectedTechnology.status}
-        </p>
+{selectedTechnology && (
+  <div className="technology-detail">
+    <button
+      className="detail-close"
+      onClick={() => setSelectedTechnology(null)}
+    >
+      ×
+    </button>
 
-        <h2>{selectedTechnology.name}</h2>
+    <p className="eyebrow">
+      {selectedTechnology.status}
+    </p>
 
-        <p className="detail-description">
-          {selectedTechnology.description}
-        </p>
+    <h2>{selectedTechnology.name}</h2>
 
-        <div className="detail-info">
-          <div>
-            <span>ID</span>
-            <strong>
-              {String(selectedTechnology.id).padStart(2, "0")}
-            </strong>
-          </div>
+    <p className="detail-description">
+      {selectedTechnology.description}
+    </p>
 
-          <div>
-            <span>STATUS</span>
-            <strong>{selectedTechnology.status}</strong>
-          </div>
-        </div>
+    <div className="detail-info">
+      <div>
+        <span>ID</span>
+        <strong>
+          {String(selectedTechnology.id).padStart(2, "0")}
+        </strong>
       </div>
-    )}
-          </div>
-        </section>
+
+      <div>
+        <span>STATUS</span>
+        <strong>{selectedTechnology.status}</strong>
+      </div>
+    </div>
+  </div>
+)}
+</section>
       </main>
       <footer className="creator-footer">
         <span>RESEARCHED • DESIGNED • ENGINEERED BY</span>
