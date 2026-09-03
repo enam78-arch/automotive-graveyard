@@ -106,6 +106,8 @@ function App() {
               >
                 ×
               </button>
+<div
+ className="detail-content">
 
               <p className="eyebrow">
                 {selectedTechnology.status}
@@ -198,6 +200,7 @@ function App() {
                 </div>
               )}
             </div>
+            </div>
           )}
         </section>
       </main>
@@ -208,6 +211,7 @@ function App() {
         <span>EST. 2026</span>
       </footer>
     </div>
+  
   );
 }
 

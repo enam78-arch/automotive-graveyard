@@ -1,3 +1,4 @@
+
 /* =========================================
    CAR TECHNOLOGY GRAVEYARD
    Neon / Futuristic Theme
@@ -133,8 +134,6 @@
     );
 }
 
-/* Technical grid */
-
 .hero::before {
   content: "";
 
@@ -162,8 +161,6 @@
 
   pointer-events: none;
 }
-
-/* Ambient glow */
 
 .hero::after {
   content: "";
@@ -341,8 +338,6 @@
   z-index: 2;
 }
 
-/* Scanner rings */
-
 .circle {
   position: absolute;
 
@@ -388,8 +383,6 @@
     inset 0 0 25px rgba(0, 229, 255, 0.06);
 }
 
-/* Center */
-
 .circle-small::before {
   content: "";
 
@@ -412,8 +405,6 @@
     0 0 22px #00e5ff,
     0 0 45px rgba(0, 229, 255, 0.7);
 }
-
-/* Scan line */
 
 .circle-large::after {
   content: "";
@@ -549,8 +540,6 @@
     border-color 0.3s ease,
     box-shadow 0.3s ease;
 }
-
-/* Card ambient glow */
 
 .technology-card::before {
   content: "";
@@ -700,6 +689,270 @@
 }
 
 /* =========================================
+   TECHNOLOGY DETAIL PANEL
+   ========================================= */
+
+/*
+   The panel stays fixed in the center.
+   Only .detail-content is allowed to scroll.
+*/
+
+.technology-detail {
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  z-index: 1000;
+
+  width: min(720px, 90vw);
+  max-height: 80vh;
+
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+
+  padding: 40px;
+
+  border: 1px solid rgba(0, 255, 255, 0.35);
+
+  background: rgba(5, 10, 18, 0.98);
+
+  box-shadow:
+    0 0 60px rgba(0, 255, 255, 0.12),
+    0 20px 80px rgba(0, 0, 0, 0.6);
+}
+
+/* Dark overlay behind the panel */
+
+.technology-detail::before {
+  content: "";
+
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+
+  width: 100vw;
+  height: 100vh;
+
+  transform: translate(-50%, -50%);
+
+  z-index: -1;
+
+  background: rgba(0, 0, 0, 0.72);
+
+  backdrop-filter: blur(4px);
+
+  pointer-events: none;
+}
+
+/* Scrollable detail area */
+
+.technology-detail .detail-content {
+  min-height: 0;
+
+  overflow-y: auto;
+
+  overflow-x: hidden;
+
+  padding-right: 14px;
+
+  scrollbar-width: thin;
+
+  scrollbar-color: rgba(0, 229, 255, 0.45) transparent;
+}
+
+/* Chrome / Edge / Safari scrollbar */
+
+.technology-detail .detail-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.technology-detail .detail-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.technology-detail .detail-content::-webkit-scrollbar-thumb {
+  background: rgba(0, 229, 255, 0.35);
+
+  border-radius: 10px;
+}
+
+.technology-detail .detail-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 229, 255, 0.65);
+}
+
+/* Close button */
+
+.technology-detail .detail-close {
+  position: absolute;
+
+  top: 16px;
+  right: 16px;
+
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(0, 255, 255, 0.4);
+
+  background: rgba(5, 10, 18, 0.8);
+
+  color: #ffffff;
+
+  font-size: 24px;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  z-index: 5;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.technology-detail .detail-close:hover {
+  background: rgba(0, 255, 255, 0.12);
+
+  border-color: #00ffff;
+
+  color: #00ffff;
+}
+
+/* Detail status */
+
+.technology-detail .eyebrow {
+  margin: 0 0 12px;
+
+  color: #00ffff;
+
+  font-size: 12px;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+}
+
+/* Detail title */
+
+.technology-detail h2 {
+  margin: 0 0 18px;
+
+  color: #eef7ff;
+
+  font-size: 36px;
+
+  line-height: 1.1;
+
+  letter-spacing: -0.03em;
+}
+
+/* Detail description */
+
+.detail-description {
+  max-width: 700px;
+
+  margin: 0 0 32px;
+
+  color: rgba(255, 255, 255, 0.75);
+
+  line-height: 1.7;
+}
+
+/* Category / Era */
+
+.detail-info {
+  display: flex;
+
+  gap: 50px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+  padding-top: 24px;
+
+  padding-bottom: 10px;
+}
+
+.detail-info div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.detail-info span {
+  color: rgba(255, 255, 255, 0.45);
+
+  font-size: 11px;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+.detail-info strong {
+  color: #ffffff;
+
+  font-size: 16px;
+}
+
+/* =========================================
+   CREATOR FOOTER
+   ========================================= */
+
+.creator-footer {
+  margin-top: 96px;
+
+  padding: 48px 0 36px;
+
+  border-top: 1px solid rgba(0, 255, 255, 0.28);
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 10px;
+
+  text-align: center;
+}
+
+.creator-footer span {
+  color: rgba(255, 255, 255, 0.38);
+
+  font-size: 10px;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+}
+
+.creator-footer strong {
+  color: #00ffff;
+
+  font-size: 18px;
+
+  font-weight: 500;
+
+  letter-spacing: 2px;
+
+  text-shadow:
+    0 0 14px rgba(0, 255, 255, 0.22);
+}
+
+/* =========================================
    ANIMATIONS
    ========================================= */
 
@@ -707,11 +960,13 @@
   0%,
   100% {
     opacity: 0.65;
+
     transform: scale(1);
   }
 
   50% {
     opacity: 1;
+
     transform: scale(1.025);
   }
 }
@@ -735,11 +990,13 @@
     min-height: auto;
 
     padding-top: 80px;
+
     padding-bottom: 90px;
   }
 
   .hero-decoration {
     width: 340px;
+
     height: 340px;
 
     margin-right: 0;
@@ -747,22 +1004,27 @@
 
   .circle-large {
     width: 340px;
+
     height: 340px;
   }
 
   .circle-medium {
     width: 240px;
+
     height: 240px;
 
     top: 50px;
+
     left: 50px;
   }
 
   .circle-small {
     width: 130px;
+
     height: 130px;
 
     top: 105px;
+
     left: 105px;
   }
 }
@@ -784,6 +1046,10 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* =========================================
+   DETAIL PANEL - MOBILE
+   ========================================= */
 
 @media (max-width: 600px) {
   .navbar {
@@ -812,7 +1078,9 @@
 
   .section-heading {
     flex-direction: column;
+
     align-items: flex-start;
+
     gap: 15px;
   }
 
@@ -821,130 +1089,48 @@
 
     padding: 25px;
   }
-}/* Technology Detail Panel */
-.technology-detail::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background: rgba(0, 0, 0, 0.72);
-  backdrop-filter: blur(4px);
-}
-.technology-detail {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1000;
 
-  width: min(720px, 90vw);
-  max-height: 80vh;
-  overflow-y: auto;
+  .technology-detail {
+    width: 92vw;
 
-  padding: 40px;
+    max-height: 85vh;
 
-  border: 1px solid rgba(0, 255, 255, 0.35);
-  background: rgba(5, 10, 18, 0.98);
-  box-shadow:
-    0 0 60px rgba(0, 255, 255, 0.12),
-    0 20px 80px rgba(0, 0, 0, 0.6);
-}
+    padding: 30px 24px 24px;
+  }
 
-.technology-detail .detail-close {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 36px;
-  height: 36px;
-  border: 1px solid rgba(0, 255, 255, 0.4);
-  background: transparent;
-  color: #ffffff;
-  font-size: 24px;
-  cursor: pointer;
-}
+  .technology-detail .detail-content {
+    max-height: calc(85vh - 54px);
 
-.technology-detail .detail-close:hover {
-  background: rgba(0, 255, 255, 0.12);
-}
+    padding-right: 10px;
+  }
 
-.technology-detail .eyebrow {
-  margin-bottom: 12px;
-  color: #00ffff;
-  font-size: 12px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-}
+  .technology-detail h2 {
+    font-size: 30px;
 
-.technology-detail h2 {
-  margin: 0 0 18px;
-  font-size: 36px;
-  line-height: 1.1;
-}
+    padding-right: 35px;
+  }
 
-.detail-description {
-  max-width: 700px;
-  margin-bottom: 32px;
-  color: rgba(255, 255, 255, 0.75);
-  line-height: 1.7;
-}
+  .detail-description {
+    font-size: 14px;
 
-.detail-info {
-  display: flex;
-  gap: 50px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 24px;
-}
+    line-height: 1.65;
+  }
 
-.detail-info div {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
+  .detail-info {
+    flex-direction: column;
 
-.detail-info span {
-  color: rgba(255, 255, 255, 0.45);
-  font-size: 11px;
-  letter-spacing: 2px;
-}
+    gap: 20px;
+  }
 
-.detail-info strong {
-  color: #ffffff;
-  font-size: 16px;
-}
-.creator-footer {
-  margin-top: 96px;
-  padding: 48px 0 36px;
-  border-top: 1px solid rgba(0, 255, 255, 0.28);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  text-align: center;
-}
-
-.creator-footer span {
-  color: rgba(255, 255, 255, 0.38);
-  font-size: 10px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-}
-
-.creator-footer strong {
-  color: #00ffff;
-  font-size: 18px;
-  font-weight: 500;
-  letter-spacing: 2px;
-  text-shadow: 0 0 14px rgba(0, 255, 255, 0.22);
-}
-
-@media (max-width: 600px) {
   .creator-footer {
     margin-top: 56px;
+
     padding: 32px 16px 24px;
   }
 
   .creator-footer span {
     font-size: 9px;
+
     letter-spacing: 2px;
   }
 
