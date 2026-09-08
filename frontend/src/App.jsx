@@ -98,8 +98,15 @@ function App() {
             ))}
           </div>
 
-          {selectedTechnology && (
-            <div className="technology-detail">
+         {selectedTechnology && (
+  <div
+    className="technology-detail-overlay"
+    onClick={() => setSelectedTechnology(null)}
+  >
+    <div
+      className="technology-detail"
+      onClick={(event) => event.stopPropagation()}
+    >
               <button
                 className="detail-close"
                 onClick={() => setSelectedTechnology(null)}
@@ -199,8 +206,9 @@ function App() {
                   <p>{selectedTechnology.legacy}</p>
                 </div>
               )}
+                        </div>
             </div>
-            </div>
+          </div>
           )}
         </section>
       </main>
